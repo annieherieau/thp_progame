@@ -2,7 +2,7 @@ import "../style/index.scss"; // Sass
 
 // Import all of Bootstrap's JS
 import * as bootstrap from "bootstrap";
-
+import { routes } from "./routes";
 /*
 // You can also import JavaScript plugins individually as needed to keep bundle
 import Alert from 'bootstrap/js/dist/alert'
@@ -11,5 +11,18 @@ import Alert from 'bootstrap/js/dist/alert'
 import { Tooltip, Toast, Popover } from 'bootstrap'
 */
 
-console.log("Hello!");
-console.log(process.env.SECRET);
+// ROUTER
+const callRoute = () => {
+  const { hash } = window.location;
+  const pathParts = hash.substring(1).split("/");
+  const pageName = pathParts[0];
+  const pageArgument = pathParts[1] || "";
+  const pageFunction = routes[pageName];
+
+  if (pageFunction !== undefined) {
+    pageFunction(pageArgument);
+  }
+};
+
+window.addEventListener("hashchange", () => callRoute());
+window.addEventListener("DOMContentLoaded", () => callRoute());
