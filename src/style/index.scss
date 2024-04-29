@@ -7,6 +7,11 @@ $h4-font-size: 1rem !default;
 @import "bootstrap/scss/bootstrap";
 @import "./bootswatch";
 
+
+body{
+  padding: 1rem 3rem;
+}
+
 h1,
 h2,
 h3,
@@ -20,6 +25,9 @@ h4{
   font-size: $h4-font-size;
 }
 // HEADER
+.navbar{
+  background-color: $body-bg;
+}
 .navbar-brand,
 .navbar-brand:hover {
   font-family: $font-title;
@@ -106,3 +114,13 @@ a.cardGame:visited {
 #showBtn {
   width: 20rem;
 }
+
+// FOOTER
+
+footer hr{
+  border-top: .75rem solid $red;
+  opacity: 1;
+  width: 8rem;
+}
+
+
