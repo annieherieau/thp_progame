@@ -1,3 +1,5 @@
+import { Button } from "./components";
+
 export const PageDetail = (argument = '') => {
   const preparePage = () => {
     const cleanedArgument = argument.trim().replace(/\s+/g, "-");
