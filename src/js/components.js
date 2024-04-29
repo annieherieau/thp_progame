@@ -9,3 +9,4 @@ export function cardGame(article) {
 </a>`;
   return html;
 }
+
