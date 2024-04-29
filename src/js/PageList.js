@@ -28,7 +28,7 @@ export const PageList = (argument = "") => {
         });
     };
 
-    fetchList(`https://api.rawg.io/api/developers?key=${process.env.RAWG_APIKEY}`, cleanedArgument);
+    fetchList(`${process.env.RAWG_URL}?key=${process.env.RAWG_APIKEY}`, cleanedArgument);
   };
 
   // Affichage de la page
