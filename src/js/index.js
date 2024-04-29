@@ -3,13 +3,15 @@ import "../style/index.scss"; // Sass
 // Import all of Bootstrap's JS
 import * as bootstrap from "bootstrap";
 import { routes } from "./routes";
-/*
-// You can also import JavaScript plugins individually as needed to keep bundle
-import Alert from 'bootstrap/js/dist/alert'
 
-// or, specify which plugins you need:
-import { Tooltip, Toast, Popover } from 'bootstrap'
-*/
+// Search form
+document.addEventListener("submit", (e) => {
+  e.preventDefault();
+  let searchInput = encodeURIComponent(
+    document.getElementById("search").value
+  ).trim();
+  document.location.href = `/#${routes.pagelist.name.toLowerCase()}/${searchInput}`;
+});
 
 // ROUTER
 const callRoute = () => {

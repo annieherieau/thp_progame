@@ -1,5 +1,5 @@
 // Your variable overrides can go here, e.g.:
-// $h1-font-size: 3rem;
+$font-title: "Arial Black";
 
 // Import all of Bootstrap's CSS
 
@@ -7,31 +7,58 @@
 @import "bootstrap/scss/bootstrap";
 @import "./bootswatch";
 
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: $font-title;
+}
+// HEADER
+.navbar-brand,
+.navbar-brand:hover {
+  font-family: $font-title;
+  color: $red;
+  font-size: $h2-font-size;
+}
+
 // SEARCH INPUT
-.search{
-  width: 100%;
+.search {
+  width: 15rem;
   border: 0.1em solid $white;
   border-radius: 50em;
   color: $white;
-  background-image: url('../assets/images/search.png');
+  background-image: url("../assets/images/search.png");
   background-repeat: no-repeat;
   background-position: 0.6em 0.6em;
   background-size: 1.25rem;
   padding-left: 2.25rem;
 }
 
-.form-control:focus{
+// forms
+.form-control:focus {
   color: $white;
   border-color: $white;
   box-shadow: 0 0 0 0.25rem rgba(106, 106, 106, 0.25);
 }
 
+select {
+  width: 20rem;
+  padding: 0.75rem;
+  background-color: $red;
+  color: $white;
+  border: none;
+}
+
 // CARDS
-.cardImg{
+.cardImg {
   width: 100%;
 }
 
-a.cardGame, a.cardGame:hover,  a.cardGame:visited{
+a.cardGame,
+a.cardGame:hover,
+a.cardGame:visited {
   display: block;
   width: 20em;
   text-decoration: none;

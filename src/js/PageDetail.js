@@ -1,6 +1,6 @@
 import { Button } from "./components";
 
-export const PageDetail = (argument = '') => {
+export const PageDetail = (argument = "") => {
   const preparePage = () => {
     const cleanedArgument = argument.trim().replace(/\s+/g, "-");
 
@@ -17,6 +17,9 @@ export const PageDetail = (argument = '') => {
         .then((response) => response.json())
         .then((responseData) => {
           displayGame(responseData);
+        })
+        .catch((error) => {
+          console.log(error.message);
         });
     };
 
