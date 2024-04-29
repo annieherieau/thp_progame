@@ -28,11 +28,15 @@ h4{
 .navbar{
   background-color: $body-bg;
 }
+.container-fluid{
+  padding: 0;
+}
 .navbar-brand,
 .navbar-brand:hover {
   font-family: $font-title;
   color: $red;
   font-size: $h2-font-size;
+  
 }
 
 // SEARCH INPUT
