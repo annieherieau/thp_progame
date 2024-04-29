@@ -1,6 +1,6 @@
 // Your variable overrides can go here, e.g.:
-$font-title: "Arial Black";
-
+$font-title: "Arial Black"!default;
+$h4-font-size: 1rem !default;
 // Import all of Bootstrap's CSS
 
 @import "./variables";
@@ -14,6 +14,10 @@ h4,
 h5,
 h6 {
   font-family: $font-title;
+}
+
+h4{
+  font-size: $h4-font-size;
 }
 // HEADER
 .navbar-brand,
@@ -52,10 +56,6 @@ select {
 }
 
 // PAGELIST ELEMENTS
-.cardImg {
-  width: 100%;
-}
-
 a.cardGame,
 a.cardGame:hover,
 a.cardGame:visited {
@@ -64,9 +64,45 @@ a.cardGame:visited {
   text-decoration: none;
   color: $white;
 }
-
-#showBtn{
-  width: 20rem;
-  margin: auto;
+.cardBody {
+  position: relative;
+  width: 100%;
 }
-// .page-list .articles .cardGame
+.cardImg {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+.overlay {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 100%;
+  width: 100%;
+  opacity: 0;
+  transition: 1s ease;
+  background-color: $dark;
+}
+
+.cardBody:hover .overlay {
+  opacity: 1;
+}
+
+.textCard {
+  margin: auto;
+  color: $white;
+  text-align: center;
+}
+
+// BUTTONS
+.btn{
+  border-radius: 0;
+  font-size: $h4-font-size;
+  font-weight: bold;
+}
+#showBtn {
+  width: 20rem;
+}

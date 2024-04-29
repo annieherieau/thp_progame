@@ -15,7 +15,7 @@ export const PageList = (argument = "") => {
       const resultsContainer = document.querySelector(".page-list .articles");
       resultsContainer.innerHTML += resultsContent.join("");
       const listContainer = document.querySelector(".page-list");
-      listContainer.innerHTML+= Button('Show More', 'btn btn-primary showMore', 'showBtn')
+      listContainer.innerHTML+= `<div class='d-flex justify-content-center my-3'>${Button('Show More', 'btn btn-primary showMore', 'showBtn')}</div>`
       // Toggle button showMore / ShowLess
       document.getElementById("showBtn").addEventListener("click", (e) => {
         const cardGames = document.querySelectorAll(".cardGame");
