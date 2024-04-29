@@ -8,17 +8,20 @@
     <title>The Hyper Progame</title>
   </head>
   <body>
-    <header class="d-flex justify-content-between p-4">
+    <header class="d-flex p-4 justify-content-between">
       <h1 class="text-primary">The Hyper Progame</h1>
       <!-- search -->
-      <div> <input
+      <form class="d-flex my-auto">
+        <input
         type="search"
         class="form-control search"
         name="search"
         id="search"
         placeholder="Find a game..."
-      />
+      /><button class="btn btn-sm" type="submit">Search</button>
+      </form>
     </header>
+    
     <a href="#">Home</a>
     <a href="#pagelist">PageList</a>
     <a href="#pagelist/borderlands">PageList borderlands</a>
