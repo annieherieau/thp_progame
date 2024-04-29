@@ -1,5 +1,6 @@
+import { cardGame } from "./components";
+
 export const PageList = (argument = "") => {
-  console.log("Page List", argument);
 
   // Préparer le template
   const preparePage = () => {
@@ -7,15 +8,9 @@ export const PageList = (argument = "") => {
 
     // affichage des articles
     const displayResults = (articles) => {
-      const resultsContent = articles.map((article) => (
-        `<article class="card cardGame">
-          <h1>${article.name}</h1>
-          <h2>${article.released}</h2>
-          <a href="#pagedetail/${article.id}">${article.id}</a>
-        </article>`
-      ));
+      const resultsContent = articles.map((article) => cardGame(article));
       const resultsContainer = document.querySelector('.page-list .articles');
-      resultsContainer.innerHTML = resultsContent.join("\n");
+      resultsContainer.innerHTML = resultsContent.join("");
     };
 
     // REQUEST
@@ -35,7 +30,7 @@ export const PageList = (argument = "") => {
   const render = () => {
     pageContent.innerHTML = `
       <section class="page-list">
-        <div class="articles">Hey, this page is a PageList template, about : ${argument}</div>
+        <div class="articles d-flex gap-3 flex-wrap">Recherche : ${argument}</div>
       </section>
     `;
 

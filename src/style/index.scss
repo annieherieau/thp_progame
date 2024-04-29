@@ -5,31 +5,18 @@
 
 @import "./variables";
 @import "bootstrap/scss/bootstrap";
-@import "./bootswatch"
+@import "./bootswatch";
 
+// CARDS
+.cardImg{
+  width: 100%;
+}
 
-// // Variables
-// :root {
-//   --bs-primary: #d20a32;
-//   --bs-primary-rgb: 210, 10, 50;
-//   --bs-body-bg: #191919;
-//   --bs-heading-color: #ffffff;
-// }
+a.cardGame, a.cardGame:hover,  a.cardGame:visited{
+  display: block;
+  width: 20em;
+  text-decoration: none;
+  color: $white;
+}
 
-// // CARDS
-// .cardGame {
-//   border: #d20a32 1px solid;
-//   width: 10rem;
-// }
-
-
-// ???
-// @mixin mobile {
-//   @media (max-width: $mobile-width) {
-//     @content;
-//   }
-// }
-
-// @include mobile {
-//   background: red;
-// }
+// .page-list .articles .cardGame
