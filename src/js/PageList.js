@@ -8,7 +8,7 @@ export const PageList = (argument = "") => {
     // affichage des articles
     const displayResults = (articles) => {
       const resultsContent = articles.map((article) => (
-        `<article class="cardGame">
+        `<article class="card cardGame">
           <h1>${article.name}</h1>
           <h2>${article.released}</h2>
           <a href="#pagedetail/${article.id}">${article.id}</a>

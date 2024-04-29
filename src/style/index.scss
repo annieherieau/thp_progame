@@ -1,17 +1,33 @@
+// Your variable overrides can go here, e.g.:
+// $h1-font-size: 3rem;
+
 // Import all of Bootstrap's CSS
+@import "./variables";
 @import "bootstrap/scss/bootstrap";
+@import "./bootswatch"
 
-// Variables
-$color-red: red;
+// // Variables
+// :root {
+//   --bs-primary: #d20a32;
+//   --bs-primary-rgb: 210, 10, 50;
+//   --bs-body-bg: #191919;
+//   --bs-heading-color: #ffffff;
+// }
 
-// fonts
-@font-face {
-  font-family: 'Big Noodles';
-  src: url('../assets/fonts/big_noodle_titling.ttf');
-}
+// // CARDS
+// .cardGame {
+//   border: #d20a32 1px solid;
+//   width: 10rem;
+// }
 
-// Balises
-h1 {
-  color: $color-red;
-  font-family: 'Big Noodles';
-}
+
+// ???
+// @mixin mobile {
+//   @media (max-width: $mobile-width) {
+//     @content;
+//   }
+// }
+
+// @include mobile {
+//   background: red;
+// }
