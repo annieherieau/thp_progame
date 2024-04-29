@@ -51,7 +51,7 @@ select {
   border: none;
 }
 
-// CARDS
+// PAGELIST ELEMENTS
 .cardImg {
   width: 100%;
 }
@@ -65,4 +65,8 @@ a.cardGame:visited {
   color: $white;
 }
 
+#showBtn{
+  width: 20rem;
+  margin: auto;
+}
 // .page-list .articles .cardGame

@@ -1,5 +1,5 @@
 export function Button(text, btnClass = "btn btn-primary", id) {
-  return `<button type="button" class="${btnClass}" id"${id}"=>${text}</button>`;
+  return `<button type="button" class="${btnClass}" id="${id}"=>${text}</button>`;
 }
 
 export function cardGame(article, collapse) {
