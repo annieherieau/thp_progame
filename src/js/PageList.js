@@ -47,7 +47,7 @@ export const PageList = (argument = "") => {
     const fetchList = (argument) => {
       argument = argument.split('?').shift();
       // get param TYPE
-      fetch(getRequestUrl(type, argument))
+      fetch(getRequestUrl(argument))
         .then((response) => response.json())
         .then((responseData) => {
           displayResults(responseData.results);

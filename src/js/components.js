@@ -1,27 +1,20 @@
 // Construire l'url Rawg
-export function getRequestUrl(type, argument) {
+export function getRequestUrl(argument) {
+  let type = "games";
   let url = `${process.env.RAWG_URL}/${type}?key=${process.env.RAWG_APIKEY}`;
-  let param = "";
-  if (type === "games") {
-    param = argument ? `&search=${argument}` : `&ordering=released`;
-  }
-  if (type === "games") {
-    param = argument ? `&search=${argument}` : `&ordering=released`;
-  }
-
+  let param = argument ? `&search=${argument}` : `&ordering=released`;
   return url + param;
 }
 
-export function Button(text, btnClass = "btn", id="") {
+export function Button(text, btnClass = "btn", id = "") {
   id = id ? `id="${id}"` : "";
   return `<button type="button" class="${btnClass}" ${id} =>${text}</button>`;
 }
 
-export function linkButton(text, btnClass = "btn", id="", src) {
+export function linkButton(text, btnClass = "btn", id = "", src) {
   id = id ? `id="${id}"` : "";
   return `<a class="${btnClass}" href="${src}" ${id} target="_blank"=>${text}</a>`;
 }
-
 
 export function cardGame(article, collapse) {
   let genres = article.genres
@@ -55,9 +48,9 @@ function getPlatforms(plateforms) {
     .map((p) => {
       let url = "/platforms";
       let plateform = p["platform"]["name"];
-      return `<a href="${
-        window.location.origin
-      }/#pagelist/${p["platform"]["slug"]}?type=platforms"><img class='logo' src="${getLogo(plateform)}"></a>`;
+      return `<a href="${window.location.origin}/#pagelist/${
+        p["platform"]["slug"]
+      }?type=platforms"><img class='logo' src="${getLogo(plateform)}"></a>`;
     })
     .join("");
   return html;
