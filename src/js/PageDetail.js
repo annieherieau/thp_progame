@@ -6,6 +6,7 @@ export const PageDetail = (argument = "") => {
     const cleanedArgument = argument.trim().replace(/\s+/g, "-");
     const displayGame = (gameData) => {
       const {
+        id,
         name,
         background_image,
         description,
@@ -32,7 +33,7 @@ export const PageDetail = (argument = "") => {
         <div class="hero-text">
         ${websiteBtn}
       </div>
-    </div>`;
+      </div>`;
       bannerImage.style.backgroundImage = `url(${background_image})`;
 
       // Page content
@@ -41,7 +42,7 @@ export const PageDetail = (argument = "") => {
       artRating.innerText = `${rating.toString()}/5 - ${reviews_count} votes`;
       artDescription.innerHTML = description
         .replace("<p>Plot</p>", "<h5>Plot</h4>")
-        .replace("<p>Gameplay</p>", "<h5>Gameplay</h4>");
+        .replace("<p>Gameplay</p>", "<h5>Gameplay</h4>").replace("h3>", "h5>");
       stores.forEach((s) => {
         artStores.innerHTML += `<p><a href="${
           window.location.origin
@@ -49,10 +50,15 @@ export const PageDetail = (argument = "") => {
           s.store.name
         } <img class='logo' src="${getLogo(s.store.name)}"></a></p>`;
       });
+      // fetchData(id, "stores");
+      fetchData(id, "screenshots");
+      // fetchData(id, "youtube"); // business and entreprise account only
     };
 
-    const fetchGame = (url, argument) => {
-      fetch(`${url}/games/${argument}?key=${process.env.RAWG_APIKEY}`)
+    const fetchGame = (argument) => {
+      fetch(
+        `${process.env.RAWG_URL}/games/${argument}?key=${process.env.RAWG_APIKEY}`
+      )
         .then((response) => response.json())
         .then((responseData) => {
           displayGame(responseData);
@@ -62,7 +68,38 @@ export const PageDetail = (argument = "") => {
         });
     };
 
-    fetchGame(`${process.env.RAWG_URL}`, cleanedArgument);
+    const fetchData = (gameId, data) => {
+      fetch(
+        `${process.env.RAWG_URL}/games/${gameId}/${data}?key=${process.env.RAWG_APIKEY}`
+      )
+        .then((response) => response.json())
+        .then((responseData) => {
+          displayData(responseData.results, data);
+        })
+        .catch((error) => {
+          console.log(error.message);
+        });
+    };
+
+    function displayData(responseData, data) {
+      switch (data) {
+        case "screenshots":
+          responseData.forEach((shot) => {
+            artScreenshots.innerHTML += `<img class="screenshot" src="${shot.image}">`;
+          });
+          break;
+        case "youtube":
+          responseData.forEach((video) => {
+            console.log(video);
+            // artYoutubeVideos.innerHTML += `<img class="screenshot" src="${shot.image}">`
+          });
+          break;
+        default:
+          break;
+      }
+    }
+
+    fetchGame(cleanedArgument);
   };
 
   const render = () => {
@@ -75,15 +112,10 @@ export const PageDetail = (argument = "") => {
         </div>
         <div id="artStores"><h1>BUY</h1></div>
         <div id="artTrailer"></div>
-        <div id="artScreenshots">
+        <div>
         <h1>SCREENSHOTS</h1>
+        <div id="artScreenshots"></div>
         </div>
-        <div id="artYoutube">
-          <h1>YOUTUBE</h1>
-          <div id="artYoutubeBanner"></div>
-          <div id="artYoutubeVideos"></div>
-        </div>
-        <div id="artSimilar"></div>
       </section>
     `;
 

@@ -153,8 +153,18 @@ a:visited {
 } 
 
 #artH1,
-#artDescription h5 {
+#artDescription h3, #artDescription h5 {
   color: $white;
+}
+
+#artScreenshots{
+  display: flex;
+  flex-wrap: wrap;
+}
+.screenshot{
+  width: 20em;
+  height: auto;
+  margin: .75rem;
 }
 
 
