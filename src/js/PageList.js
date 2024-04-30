@@ -1,6 +1,7 @@
 import { Button, cardGame } from "./components";
+import { getRequestUrl } from "./components";
 
-export const PageList = (argument = "") => {
+export const PageList = (argument = "", type = "games") => {
   // Préparer le template
   const preparePage = () => {
     // banner
@@ -28,6 +29,7 @@ export const PageList = (argument = "") => {
         "btn btn-primary showMore",
         "showBtn"
       )}</div>`;
+
       // Toggle button showMore / ShowLess
       document.getElementById("showBtn").addEventListener("click", (e) => {
         const cardGames = document.querySelectorAll(".cardGame");
@@ -46,14 +48,19 @@ export const PageList = (argument = "") => {
           e.target.innerText = "Show More";
         }
       });
+
+      // Icons des plateformes
+      let logos = document.querySelectorAll(".logo");
+      logos.forEach((logo) => {
+        logo.addEventListener("click", (e) => {
+          let argument = console.log(
+            e.target.src.split("/").pop().split(".").shift()
+          );
+          // PageList(argument, "platforms");
+        });
+      });
     };
 
-    // Construire l'url Rawg
-    function getRequestUrl(type, argument) {
-      let url = `${process.env.RAWG_URL}/${type}?key=${process.env.RAWG_APIKEY}`;
-      let param = argument ? `&search=${argument}` : `&ordering=released`;
-      return url + param;
-    }
     // REQUEST
     const fetchList = (type, argument) => {
       fetch(getRequestUrl(type, argument))
@@ -66,7 +73,7 @@ export const PageList = (argument = "") => {
         });
     };
 
-    fetchList("games", cleanedArgument);
+    fetchList(type, cleanedArgument);
   };
 
   // Affichage de la page
