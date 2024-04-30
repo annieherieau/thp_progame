@@ -3,6 +3,14 @@ import { Button, cardGame } from "./components";
 export const PageList = (argument = "") => {
   // Préparer le template
   const preparePage = () => {
+    // banner
+
+    document.getElementById("banner").innerHTML = `<h2>Welcome,</h2>
+  <p>The Hyper Progame is the world’s premier event for computer and video games and related products. At The Hyper Progame,
+    the video game industry’s top talent pack the Los Angeles Convention Center, connecting tens of thousands of the best,
+    brightest, and most innovative in the interactive entertainment industry. For three exciting days, leading-edge companies,
+    groundbreaking new technologies, and never-before-seen products will be showcased. The Hyper Progame connects you
+    with both new and existing partners, industry executives, gamers, and social influencers providing unprecedented exposure</p>`;
     const cleanedArgument = argument.trim().replace(/\s+/g, "-");
 
     // affichage des articles
@@ -15,7 +23,11 @@ export const PageList = (argument = "") => {
       const resultsContainer = document.querySelector(".page-list .articles");
       resultsContainer.innerHTML += resultsContent.join("");
       const listContainer = document.querySelector(".page-list");
-      listContainer.innerHTML+= `<div class='d-flex justify-content-center my-3'>${Button('Show More', 'btn btn-primary showMore', 'showBtn')}</div>`
+      listContainer.innerHTML += `<div class='d-flex justify-content-center my-3'>${Button(
+        "Show More",
+        "btn btn-primary showMore",
+        "showBtn"
+      )}</div>`;
       // Toggle button showMore / ShowLess
       document.getElementById("showBtn").addEventListener("click", (e) => {
         const cardGames = document.querySelectorAll(".cardGame");
@@ -36,10 +48,15 @@ export const PageList = (argument = "") => {
       });
     };
 
+    // Construire l'url Rawg
+    function getRequestUrl(type, argument) {
+      let url = `${process.env.RAWG_URL}/${type}?key=${process.env.RAWG_APIKEY}`;
+      let param = argument ? `&search=${argument}` : `&ordering=released`;
+      return url + param;
+    }
     // REQUEST
-    const fetchList = (url, argument) => {
-      const finalURL = argument ? `${url}&search=${argument}` : `${url}&ordering=released`;
-      fetch(finalURL)
+    const fetchList = (type, argument) => {
+      fetch(getRequestUrl(type, argument))
         .then((response) => response.json())
         .then((responseData) => {
           displayResults(responseData.results);
@@ -49,10 +66,7 @@ export const PageList = (argument = "") => {
         });
     };
 
-    fetchList(
-      `${process.env.RAWG_URL}?key=${process.env.RAWG_APIKEY}`,
-      cleanedArgument
-    );
+    fetchList("games", cleanedArgument);
   };
 
   // Affichage de la page

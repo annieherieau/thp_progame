@@ -1,5 +1,5 @@
 // Your variable overrides can go here, e.g.:
-$font-title: "Arial Black"!default;
+$font-title: "Arial Black" !default;
 $h4-font-size: 1rem !default;
 // Import all of Bootstrap's CSS
 
@@ -7,8 +7,7 @@ $h4-font-size: 1rem !default;
 @import "bootstrap/scss/bootstrap";
 @import "./bootswatch";
 
-
-body{
+body {
   padding: 1rem 3rem;
 }
 
@@ -21,14 +20,21 @@ h6 {
   font-family: $font-title;
 }
 
-h4{
+h4 {
   font-size: $h4-font-size;
 }
+
+a,
+a:hover,
+a:visited {
+  text-decoration: none;
+  color: $white;
+}
 // HEADER
-.navbar{
+.navbar {
   background-color: $body-bg;
 }
-.container-fluid{
+.container-fluid {
   padding: 0;
 }
 .navbar-brand,
@@ -36,7 +42,6 @@ h4{
   font-family: $font-title;
   color: $red;
   font-size: $h2-font-size;
-  
 }
 
 // SEARCH INPUT
@@ -68,14 +73,10 @@ select {
 }
 
 // PAGELIST ELEMENTS
-a.cardGame,
-a.cardGame:hover,
-a.cardGame:visited {
-  display: block;
+.cardGame {
   width: 20em;
-  text-decoration: none;
-  color: $white;
 }
+
 .cardBody {
   position: relative;
   width: 100%;
@@ -109,8 +110,11 @@ a.cardGame:visited {
   text-align: center;
 }
 
+.logo{
+  margin-right: .75em;
+}
 // BUTTONS
-.btn{
+.btn {
   border-radius: 0;
   font-size: $h4-font-size;
   font-weight: bold;
@@ -119,12 +123,15 @@ a.cardGame:visited {
   width: 20rem;
 }
 
+.dropdown-toggle::after {
+  white-space: unset;
+  background-color: $white;
+}
+
 // FOOTER
 
-footer hr{
-  border-top: .75rem solid $red;
+footer hr {
+  border-top: 0.75rem solid $red;
   opacity: 1;
   width: 8rem;
 }
-
-
