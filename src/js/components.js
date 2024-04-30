@@ -55,45 +55,47 @@ function getPlatforms(plateforms) {
     .map((p) => {
       let url = "/platforms";
       let plateform = p["platform"]["name"];
-      return `<img class='logo' src="${getLogo(plateform)}">`;
+      return `<a href="${
+        window.location.origin
+      }/#pagelist/${p["platform"]["slug"]}?type=platforms"><img class='logo' src="${getLogo(plateform)}"></a>`;
     })
     .join("");
   return html;
 }
 
-function getLogo(string) {
-  string = string.toLowerCase().split(" ").shift();
+export function getLogo(name) {
+  name = name.toLowerCase().split(" ").shift();
   let path = "src/assets/images/logos/";
-  switch (string) {
+  switch (name) {
     case "linux":
-      string = `${path}linux.svg`;
+      name = `${path}linux.svg`;
       break;
     case "playstation":
-      string = `${path}ps4.svg`;
+      name = `${path}ps4.svg`;
       break;
     case "nintendo":
-      string = `${path}switch.svg`;
+      name = `${path}switch.svg`;
       break;
 
     case "xbox":
-      string = `${path}xbox.svg`;
+      name = `${path}xbox.svg`;
       break;
 
     case "pc":
-      string = `${path}windows.svg`;
+      name = `${path}windows.svg`;
       break;
 
     case "macos":
-      string = `${path}apple.png`;
+      name = `${path}apple.png`;
       break;
 
     case "apple":
-      string = `${path}apple.png`;
+      name = `${path}apple.png`;
       break;
 
     default:
-      string = `${path}mobile.svg`;
+      name = `${path}mobile.svg`;
       break;
   }
-  return string;
+  return name;
 }

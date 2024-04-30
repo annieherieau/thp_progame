@@ -1,7 +1,7 @@
 import { Button, cardGame } from "./components";
 import { getRequestUrl } from "./components";
 
-export const PageList = (argument = "", type = "games") => {
+export const PageList = (argument = "") => {
   // Préparer le template
   const preparePage = () => {
     const cleanedArgument = argument.trim().replace(/\s+/g, "-");
@@ -41,20 +41,12 @@ export const PageList = (argument = "", type = "games") => {
         }
       });
 
-      // Icons des plateformes
-      let logos = document.querySelectorAll(".logo");
-      logos.forEach((logo) => {
-        logo.addEventListener("click", (e) => {
-          let argument = console.log(
-            e.target.src.split("/").pop().split(".").shift()
-          );
-          // PageList(argument, "platforms");
-        });
-      });
     };
 
     // REQUEST
-    const fetchList = (type, argument) => {
+    const fetchList = (argument) => {
+      argument = argument.split('?').shift();
+      // get param TYPE
       fetch(getRequestUrl(type, argument))
         .then((response) => response.json())
         .then((responseData) => {
@@ -65,7 +57,7 @@ export const PageList = (argument = "", type = "games") => {
         });
     };
 
-    fetchList(type, cleanedArgument);
+    fetchList(cleanedArgument);
   };
 
   // Affichage de la page

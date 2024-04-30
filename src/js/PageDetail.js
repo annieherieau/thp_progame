@@ -1,4 +1,5 @@
 import { linkButton } from "./components";
+import { getLogo } from "./components";
 
 export const PageDetail = (argument = "") => {
   const preparePage = () => {
@@ -32,7 +33,6 @@ export const PageDetail = (argument = "") => {
         ${websiteBtn}
       </div>
     </div>`;
-      console.log(background_image);
       bannerImage.style.backgroundImage = `url(${background_image})`;
 
       // Page content
@@ -42,7 +42,13 @@ export const PageDetail = (argument = "") => {
       artDescription.innerHTML = description
         .replace("<p>Plot</p>", "<h5>Plot</h4>")
         .replace("<p>Gameplay</p>", "<h5>Gameplay</h4>");
-      // artInfos.innerHTML = `ok`;
+      stores.forEach((s) => {
+        artStores.innerHTML += `<p><a href="${
+          window.location.origin
+        }/#pagelist/${s.store.slug}?type=stores"><strong></strong>${
+          s.store.name
+        } <img class='logo' src="${getLogo(s.store.name)}"></a></p>`;
+      });
     };
 
     const fetchGame = (url, argument) => {
@@ -67,7 +73,7 @@ export const PageDetail = (argument = "") => {
           <div id="artDescription"></d>
           <div id="artInfos"></div>
         </div>
-        <div id="artStores"></div>
+        <div id="artStores"><h1>BUY</h1></div>
         <div id="artTrailer"></div>
         <div id="artScreenshots">
         <h1>SCREENSHOTS</h1>

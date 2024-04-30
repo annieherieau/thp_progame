@@ -130,10 +130,16 @@ a:visited {
   background-color: $white;
 }
 // PAGE DETAILS
-#artH1,
-#artDescription h5 {
-  color: $white;
+
+#bannerImage {
+  background-image: linear-gradient($black, $black);
+  height: 30rem;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  position: relative;
 }
+
 #websiteBtn::after {
   content: url('/src/assets/images/arrow_white.png');
   position: relative;
@@ -145,14 +151,12 @@ a:visited {
   content: 'E';
   color: $red;
 } 
-#bannerImage {
-  background-image: linear-gradient($black, $black);
-  height: 20rem;
-  background-position: center;
-  background-repeat: no-repeat;
-  background-size: cover;
-  position: relative;
+
+#artH1,
+#artDescription h5 {
+  color: $white;
 }
+
 
 .hero-text {
   text-align: center;
