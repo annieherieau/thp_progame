@@ -1,20 +1,27 @@
 // Construire l'url Rawg
 export function getRequestUrl(type, argument) {
   let url = `${process.env.RAWG_URL}/${type}?key=${process.env.RAWG_APIKEY}`;
-  let param = ''
-  if (type==='games'){
+  let param = "";
+  if (type === "games") {
     param = argument ? `&search=${argument}` : `&ordering=released`;
-  } 
-  if (type==='games'){
+  }
+  if (type === "games") {
     param = argument ? `&search=${argument}` : `&ordering=released`;
-  } 
-  
+  }
+
   return url + param;
 }
 
-export function Button(text, btnClass = "btn btn-primary", id) {
-  return `<button type="button" class="${btnClass}" id="${id}"=>${text}</button>`;
+export function Button(text, btnClass = "btn", id="") {
+  id = id ? `id="${id}"` : "";
+  return `<button type="button" class="${btnClass}" ${id} =>${text}</button>`;
 }
+
+export function linkButton(text, btnClass = "btn", id="", src) {
+  id = id ? `id="${id}"` : "";
+  return `<a class="${btnClass}" href="${src}" ${id} target="_blank"=>${text}</a>`;
+}
+
 
 export function cardGame(article, collapse) {
   let genres = article.genres
