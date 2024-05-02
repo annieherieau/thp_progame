@@ -40,12 +40,10 @@ export const PageList = (argument = "") => {
           e.target.innerText = "Show More";
         }
       });
-
     };
 
     // REQUEST
     const fetchList = (argument) => {
-      argument = argument.split('?').shift();
       // get param TYPE
       fetch(getRequestUrl(argument))
         .then((response) => response.json())

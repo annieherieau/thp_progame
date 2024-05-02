@@ -45,11 +45,11 @@ export const PageDetail = (argument = "") => {
         .replace("<p>Gameplay</p>", "<h5>Gameplay</h4>")
         .replace("h3>", "h5>");
 
-      displayInfos("Developper", developers);
-      displayInfos("Plaforms", parent_platforms);
-      displayInfos("Publisher", publishers);
-      displayInfos("Genre", genres);
-      displayInfos("Tags", tags);
+      displayInfos("Developper", developers, 'developers');
+      displayInfos("Plaforms", parent_platforms, 'parent_platforms');
+      displayInfos("Publisher", publishers, 'publishers');
+      displayInfos("Genre", genres, 'genres');
+      displayInfos("Tags", tags, 'tags');
       displayStores(id, stores);
       fetchData(id, "screenshots");
       // fetchData(id, "youtube"); // business and entreprise account only
@@ -124,13 +124,13 @@ export const PageDetail = (argument = "") => {
     fetchData(gameId, "stores");
   }
 
-  function displayInfos(title, infos) {
+  function displayInfos(title, infos, type) {
     let infos_string = infos
       .map((i) => {
         if (i.name) {
-          return i.name;
+          return `<a href="${window.location.origin}/#pagelist/${i.id}?type=${type}">${i.name}</a>`;
         } else {
-          return i.platform["name"];
+          return `<a href="${window.location.origin}/#pagelist/${i.platform["id"]}?type=${type}">${i.platform["name"]}</a>`;
         }
       })
       .join(", ");

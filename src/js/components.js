@@ -1,8 +1,14 @@
 // Construire l'url Rawg
 export function getRequestUrl(argument) {
-  let type = "games";
-  let url = `${process.env.RAWG_URL}/${type}?key=${process.env.RAWG_APIKEY}`;
-  let param = argument ? `&search=${argument}` : `&ordering=released`;
+  let type = argument.split("?type=")[1];
+  argument = argument.split("?type=")[0];
+  let url = `${process.env.RAWG_URL}/games?key=${process.env.RAWG_APIKEY}`;
+  let param = "";
+  if (type) {
+    param += `&${type}=${argument}`;
+  } else {
+    param += argument ? `&search=${argument}` : "";
+  }
   return url + param;
 }
 
@@ -49,8 +55,10 @@ function getPlatforms(plateforms) {
       let url = "/platforms";
       let plateform = p["platform"]["name"];
       return `<a href="${window.location.origin}/#pagelist/${
-        p["platform"]["slug"]
-      }?type=platforms"><img class='logo' src="${getLogo(plateform)}"></a>`;
+        p["platform"]["id"]
+      }?type=parent_platforms"><img class='logo' src="${getLogo(
+        plateform
+      )}"></a>`;
     })
     .join("");
   return html;
